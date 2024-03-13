@@ -84,4 +84,9 @@ public class Villager : MonoBehaviour
     {
         animator.SetTrigger("Attack");
     }
+
+    public virtual ChestType CanOpen()  //ChestType is similar to a float,
+    {
+        return ChestType.Villager;
+    }
 }
