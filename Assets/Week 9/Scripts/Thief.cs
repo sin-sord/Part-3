@@ -19,8 +19,11 @@ public class Thief : Villager
         Instantiate(dagger1, spawnPoint1.position, spawnPoint1.rotation);
         Instantiate(dagger2, spawnPoint2.position, spawnPoint2.rotation);
 
-        transform.position = dashPoint.position;  // when the theif attacks they dash
-        destination = transform.position;  // destination is the dash point
+        /*transform.position = dashPoint.position;  // when the theif attacks they dash
+        destination = transform.position;  // destination is the dash point*/
+        speed = 7;
+        destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
     }
 
     private void OnBecameInvisible()
