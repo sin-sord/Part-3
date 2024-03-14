@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ChestType {Villager, Merchant, Archer }  // declares types
+public enum ChestType {Villager, Merchant, Archer, Thief }  // declares types
 public class Chest : MonoBehaviour
 {
     public Animator animator;
