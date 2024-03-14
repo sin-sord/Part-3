@@ -2,9 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CharacterControl : MonoBehaviour
 {
+    public TextMeshProUGUI selectedType;
+
     public static Villager SelectedVillager { get; private set; }
     public static void SetSelectedVillager(Villager villager)
     {
@@ -15,5 +18,22 @@ public class CharacterControl : MonoBehaviour
         SelectedVillager = villager;
         SelectedVillager.Selected(true);
     }
-    
+
+/*    private void Start()
+    {
+        selectedType = GetComponent<TextMeshProUGUI>();
+    }*/
+
+    private void Update()
+    {
+        if (SelectedVillager != null)
+        {
+            selectedType.text = "Picked: " + SelectedVillager.CanOpen().ToString();
+        }
+        else
+        {
+            selectedType.text = "none";
+        }
+    }
+
 }
