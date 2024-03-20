@@ -11,20 +11,61 @@ public class Thief : Villager
     public Transform spawnPoint2;
 
     public Transform dashPoint;
+/*    public float timer;
+    public float dashTime = 2;
+    bool isDashing;*/
 
     protected override void Attack()
     {
         destination = transform.position;
-        base.Attack();
+/*      base.Attack();
         Instantiate(dagger1, spawnPoint1.position, spawnPoint1.rotation);
-        Instantiate(dagger2, spawnPoint2.position, spawnPoint2.rotation);
+        Instantiate(dagger2, spawnPoint2.position, spawnPoint2.rotation);*/
 
         /*transform.position = dashPoint.position;  // when the theif attacks they dash
         destination = transform.position;  // destination is the dash point*/
-        speed = 7;
-        destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+   //   speed = 7;
+  //    destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        StartCoroutine(Dash());
 
+
+/*      isDashing = true;
+        timer = dashTime;*/
     }
+
+    IEnumerator Dash()
+    {
+        destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        speed = 7;
+
+        while (speed > 3)
+        {
+            yield return null;
+        }
+
+      /*timer -= Time.deltaTime;
+        if(timer < 0)
+        {
+            isDashing=false;*/
+        base.Attack();
+        yield return new WaitForSeconds(0.1f);
+        Instantiate(dagger1, spawnPoint1.position, spawnPoint1.rotation);
+        yield return new WaitForSeconds(0.1f);
+        Instantiate(dagger2, spawnPoint2.position, spawnPoint2.rotation);
+      //}
+    }
+
+
+/*    protected override void Update()
+    {
+        base.Update();
+        if (isDashing)
+        {
+            Dash();
+        }
+    }*/
+
+
 
     private void OnBecameInvisible()
     {
