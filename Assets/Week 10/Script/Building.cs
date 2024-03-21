@@ -5,22 +5,22 @@ using UnityEngine;
 
 public class Building : MonoBehaviour
 {
-    public GameObject Stall;
-    public GameObject Roof;
-    public GameObject Food;
+    public GameObject stall; // Game Object for building
+    public GameObject roof; // Game Object for building
+    public GameObject food; // Game Object for building
 
     float interpolation = 0.1f;
-    float lerpBuild;
+    float lerpBuildSpeed;
     public AnimationCurve lerpSpeed;
 
 
     Coroutine scaleUp;
 
-    public Transform startBuild1;
-    public Transform startBuild2;
-    public Transform startBuild3;
+    public Transform spawnPart1;  // sets the spawn-point of part 1
+    public Transform spawnPart2;  // sets the spawn-point of part 2
+    public Transform spawnPart3;  // sets the spawn-point of part 3
 
-    Vector3 newScale = new Vector3(1.5f,1.5f,0);
+    Vector3 newScale = new Vector3(1.5f,1.5f,0);  // sets the scale of the building
 
     void Start()
     {
@@ -33,23 +33,23 @@ public class Building : MonoBehaviour
 
     IEnumerator Build()
     {
-        lerpBuild = 3;
-        while (lerpBuild < 3)
+        lerpBuildSpeed = 5;
+        while (lerpBuildSpeed < 4)
         {
         yield return null;
         }
 
-        interpolation = lerpSpeed.Evaluate(lerpBuild);
+        interpolation = lerpSpeed.Evaluate(lerpBuildSpeed);
 
         yield return new WaitForSeconds(1f);
-        Stall.transform.localScale = Vector3.Lerp(startBuild1.position, newScale, interpolation);  //  increase the scale of object
+        stall.transform.localScale = Vector3.Lerp(spawnPart1.position, newScale, interpolation);  //  increase the scale of object
         yield return new WaitForSeconds(1f);
-
-        Roof.transform.localScale = Vector3.Lerp(startBuild2.position, newScale, interpolation);  //  increase the scale of object
-        yield return new WaitForSeconds(1f);
-
-        Food.transform.localScale = Vector3.Lerp(startBuild3.position, newScale, interpolation);  //  increase the scale of object
         Debug.Log("using lerp");
+        roof.transform.localScale = Vector3.Lerp(spawnPart2.position, newScale, interpolation);  //  increase the scale of object
+        yield return new WaitForSeconds(1f);
+
+        food.transform.localScale = Vector3.Lerp(spawnPart3.position, newScale, interpolation);  //  increase the scale of object
+        Debug.Log("Done");
 
     }
 }
