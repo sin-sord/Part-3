@@ -7,6 +7,7 @@ using TMPro;
 public class CharacterControl : MonoBehaviour
 {
     public TextMeshProUGUI selectedType;
+    public List<Villager> characterSelect;
 
     public static Villager SelectedVillager { get; private set; }
     public static void SetSelectedVillager(Villager villager)
@@ -34,6 +35,11 @@ public class CharacterControl : MonoBehaviour
         {
             selectedType.text = "none";
         }
+    }
+
+    public void DropDownCharacterHasChanged(int selection)
+    {
+        SetSelectedVillager(characterSelect[selection]);
     }
 
 }
