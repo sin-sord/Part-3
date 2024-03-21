@@ -34,10 +34,10 @@ public class Building : MonoBehaviour
     IEnumerator Build()
     {
         lerpBuildSpeed = 5;
-        while (lerpBuildSpeed < 4)
-        {
-        yield return null;
-        }
+    //    while (lerpBuildSpeed < 4)
+    //    {
+    //    yield return null;
+     //   }
 
         interpolation = lerpSpeed.Evaluate(lerpBuildSpeed);
 
