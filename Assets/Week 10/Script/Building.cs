@@ -50,6 +50,5 @@ public class Building : MonoBehaviour
 
         food.transform.localScale = Vector3.Lerp(spawnPart3.position, newScale, interpolation);  //  increase the scale of object
         Debug.Log("Done");
-
     }
 }
