@@ -15,6 +15,7 @@ public class Growing : MonoBehaviour
     public TextMeshProUGUI crTMP;
     public int running;
     Coroutine coroutine;
+    Coroutine circleA;
 
     void Start()
     {
@@ -33,7 +34,7 @@ public class Growing : MonoBehaviour
         yield return new WaitForSeconds(1f);  // waits 1 second before starting the triangles code
         coroutine = StartCoroutine(Triangle());
         yield return new WaitForSeconds(1f);
-        Circle();
+        yield return StartCoroutine (CircleA());
         yield return coroutine;  // a way of saying start the coroutine, do things, then finish
         running -= 1;  // says that a coroutine is not running
     }
@@ -66,9 +67,9 @@ public class Growing : MonoBehaviour
         }
         running -= 1;  // says that a coroutine is not running
     }
-    void Circle()
+    IEnumerator CircleA()
     {
-
+     //   running += 1;
         float size = 0;
         while (size < 5)
         {
@@ -76,13 +77,25 @@ public class Growing : MonoBehaviour
             Vector3 scale = new Vector3(size, size, size);
             circle.transform.localScale = scale;
             circleTMP.text = "Cirlce: " + scale;
+            yield return null;
+            StartCoroutine(CircleB());
         }
+     //  running -= 1;
+    }
+    IEnumerator CircleB()
+    {
+     //  running += 1;
+        float size = 5;
         while (size > 0)
         {
             size -= Time.deltaTime;
             Vector3 scale = new Vector3(size, size, size);
             circle.transform.localScale = scale;
             circleTMP.text = "Cirlce: " + scale;
+            yield return null;
+         //   StartCoroutine(CircleA());
         }
+     //   running -= 1;
+
     }
 }
