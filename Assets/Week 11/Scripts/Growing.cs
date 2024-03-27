@@ -34,7 +34,7 @@ public class Growing : MonoBehaviour
         yield return new WaitForSeconds(1f);  // waits 1 second before starting the triangles code
         coroutine = StartCoroutine(Triangle());
         yield return new WaitForSeconds(1f);
-        yield return StartCoroutine (CircleA());
+        StartCoroutine (CircleA());
         yield return coroutine;  // a way of saying start the coroutine, do things, then finish
         running -= 1;  // says that a coroutine is not running
     }
@@ -78,14 +78,7 @@ public class Growing : MonoBehaviour
             circle.transform.localScale = scale;
             circleTMP.text = "Cirlce: " + scale;
             yield return null;
-            StartCoroutine(CircleB());
         }
-     //  running -= 1;
-    }
-    IEnumerator CircleB()
-    {
-     //  running += 1;
-        float size = 5;
         while (size > 0)
         {
             size -= Time.deltaTime;
