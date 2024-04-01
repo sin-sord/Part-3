@@ -5,6 +5,8 @@ using UnityEngine;
 public class CoinSpawner : MonoBehaviour
 {
     public GameObject coinPrefab;
+    public GameObject silverCoinPrefab;
+    public GameObject[] coinSpawns = new GameObject[2];
 
     public float timer = 0;
     Coroutine coinspawner;
@@ -22,7 +24,7 @@ public class CoinSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(4);  // wait 4 seconds...
             Vector3 spawn = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 0);  //  a vector3 that has a spawn position to be random
-            Instantiate(coinPrefab, spawn, transform.rotation);   // instantiates a coin prefab that spawns at a random positon with vector3
+            Instantiate(coinSpawns[Random.Range(0, 2)], spawn, transform.rotation);  // instantiates a coin prefab that spawns at a random positon with vector3
             ScoreTracker.totalCoin += 1;  // add "1" to the total amount of coins spawned
         }
     }
