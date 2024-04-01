@@ -15,12 +15,12 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        move.x = Input.GetAxis("Horizontal");
-        move.y = Input.GetAxis("Vertical");
+        move.x = Input.GetAxis("Horizontal");  //  allows the player to move left and right
+        move.y = Input.GetAxis("Vertical");  //  allows the player to move up and down
     }
 
     private void FixedUpdate()
     {
-        rb.AddForce(move * speed * Time.deltaTime);
+        rb.AddForce(move * speed * Time.deltaTime);  // allows the player to move using the rigidbody's movement * speed * Time.deltaTime
     }
 }
