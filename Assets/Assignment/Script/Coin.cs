@@ -12,6 +12,7 @@ public class Coin : MonoBehaviour
     public float timer = 0;
     public int score = 0;
     ScoreTracker scoreTrack;
+    TextMeshProUGUI coinCollected;
 
     protected virtual void Start()
     {
@@ -24,7 +25,7 @@ public class Coin : MonoBehaviour
         {
             Destroy(gameObject); // desotry the object
             ScoreTracker.keepScore += 5; // add "5" to the score
-            ScoreTracker.SetCurrentCoin();  // set the score text 
+            ScoreTracker.SetCurrentCoin(coinCollected);  // set the score text 
         }
     }
 

@@ -15,10 +15,9 @@ public class ScoreTracker : MonoBehaviour
     public TextMeshProUGUI coinCollected;
     public TextMeshProUGUI coinMissed;
 
-    public static void SetCurrentCoin()
+    public static void SetCurrentCoin(TextMeshProUGUI coinCollected)
     {
-        print("Coin Collected");  //  prints that the coins are being collected
-
+        print("Coin Collected" + coinCollected);  //  prints that the coins are being collected
     }
 
     public void Update()
